@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Locker - Home
+{% endblock %}
+
+{% block content %}
+
+<h1>HOME</h1> 
+<button data-signup class="btn btn-info">Cadastrar Biometria para acessar App</button>
+<button data-login class="btn btn-primary">Log In</button>
+<p data-userFeedBack ></p>
+<dialog data-modal >
+    <button data-close style="font-size: 2rem; position: absolute; top: 0; right: 0"> &times;</button>
+    <div data-content></div>
+</dialog>
+
+<script>   
+    const SERVER_URL = "https://{{ request.get_host }}";
+    const REGISTER_INIT_URL = "{% url 'accounts:register_init' %}";
+    const REGISTER_VERIFY_URL = "{% url 'accounts:register_verify' %}";
+    const AUTH_INIT_URL = "{% url 'accounts:auth_init' %}";
+    const AUTH_VERIFY_URL = "{% url 'accounts:auth_verify' %}";
+</script>
+<script type="module" src="/static/js/webauthn4.js"></script>
+
+{% endblock %}
